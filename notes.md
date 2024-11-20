@@ -16,6 +16,8 @@
 - [x] Add README.md
   - [x] Describe how to run the backend
   - [x] Describe how to run the CLI
+- [ ] Add Dockerfile for backend
+- [ ] Add docker-compose file
 
 ## Questions
 
