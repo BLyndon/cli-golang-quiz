@@ -8,14 +8,14 @@
   - [x] Add GET `/questions` endpoint
   - [x] Add POST `/submit` endpoint
   - [ ] Add GET `/stats` endpoint
-  - [ ] Hardcode questions
-  - [ ] Hardcode answers
-  - [ ] Add validation
-  - [ ] Add percentage scoring with percentiles
+  - [x] Hardcode questions
+  - [x] Hardcode answers
+  - [x] Add validation
+  - [x] Add percentage scoring with percentiles
   - [x] Add dummy statistics of imaginary players
 - [x] Add README.md
-  - [ ] Describe how to run the backend
-  - [ ] Describe how to run the CLI
+  - [x] Describe how to run the backend
+  - [x] Describe how to run the CLI
 
 ## Questions
 
