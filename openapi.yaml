@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  title: Quiz API
+  description: API for managing questions, answers, and scoring in a quiz.
+  version: "1.0.0"
+paths:
+  /questions:
+    get:
+      summary: Get a list of quiz questions
+      operationId: getQuestions
+      responses:
+        "200":
+          description: A list of questions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Question"
+        "500":
+          description: Server error
+  /submission:
+    post:
+      summary: Submit answers to the quiz
+      operationId: submitAnswers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/Answer"
+      responses:
+        "200":
+          description: Quiz results with correctness and percentage
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Result"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Invalid request payload
+        "500":
+          description: Server error
+components:
+  schemas:
+    Question:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the question
+        question:
+          type: string
+          description: The text of the question
+        options:
+          type: array
+          description: A list of possible answers
+          items:
+            type: string
+    Answer:
+      type: object
+      properties:
+        question_id:
+          type: integer
+          description: The ID of the question being answered
+        answer:
+          type: integer
+          description: The index of the selected option (starting from 0)
+    Result:
+      type: object
+      properties:
+        question_id:
+          type: integer
+          description: The ID of the question that was answered
+        correct:
+          type: boolean
+          description: Indicates whether the answer was correct
+        better_than_percentage:
+          type: number
+          format: float
+          description: Percentage of players who scored worse
+          example: 85.5
